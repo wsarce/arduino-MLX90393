@@ -9,9 +9,9 @@
 #include <MLX90393.h>
 
 MLX90393::
-MLX90393()
+MLX90393(uint8_t i2c_addr)
 {
-  I2C_address = 0;
+  I2C_address = i2c_addr;
 
   cache_invalidate();
 
@@ -38,7 +38,7 @@ uint8_t
 MLX90393::
 begin(uint8_t A1, uint8_t A0, int DRDY_pin, TwoWire &wirePort)
 {
-  I2C_address = I2C_BASE_ADDR | (A1?2:0) | (A0?1:0);
+  I2C_address = I2C_address | (A1?2:0) | (A0?1:0);
   this->DRDY_pin = DRDY_pin;
   if (DRDY_pin >= 0){
     pinMode(DRDY_pin, INPUT);

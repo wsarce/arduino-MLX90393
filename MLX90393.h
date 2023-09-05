@@ -62,7 +62,7 @@ public:
     uint16_t y;
     uint16_t z;
   };
-  MLX90393();
+  MLX90393(uint8_t i2c_addr);
 
   // raw device commands
   uint8_t exit();
